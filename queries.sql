@@ -23,15 +23,16 @@ CREATE TABLE MEAL (
   NAME VARCHAR(255),
   PRICE DOUBLE,
   CALORIES INT,
-  DATE_ON_MENU DATE
+  MEAL_TIME TIMESTAMP
 );
+--The TIMESTAMP() function returns a datetime value based on a date or datetime value.
 
-INSERT INTO MEAL(NAME, PRICE, CALORIES, DATE_ON_MENU)
-VALUES ('Spaghetti Bolognese', 12.99, 600, "2023-07-31"),
-('Grilled Chicken Sandwich', 8.99, 400, "2023-07-31"),
-('Pesto Pasta', 10.99, 550, "2023-07-31"),
-('Steak and Mash', 19.99, 800, "2023-07-31"),
-('Sushi Platter', 15.99, 700, "2023-07-31");
+INSERT INTO MEAL(NAME, PRICE, CALORIES, MEAL_TIME)
+VALUES ('Spaghetti Bolognese', 12.99, 600, NOW()),
+('Grilled Chicken Sandwich', 8.99, 400, NOW()),
+('Pesto Pasta', 10.99, 550, NOW()),
+('Steak and Mash', 19.99, 800, NOW()),
+('Sushi Platter', 15.99, 700, NOW());
 
 SELECT
 CONCAT(NAME, CALORIES) AS ALIAS_NAME,
@@ -41,9 +42,9 @@ TRIM(NAME) AS trim_name,
 LENGTH(NAME) as name_length,
 SUBSTRING(NAME, 2, 5),
 ROUND(PRICE, 1),
-DATE_ADD(DATE_ON_MENU, INTERVAL 5 DAY) AS add_to_date,
-DATE_SUB(DATE_ON_MENU, INTERVAL 5 DAY) AS sub_to_date,
-FORMAT(DATE_ON_MENU, 'dd-mm-yy', 'it') AS format_date_nation,
-DATE_FORMAT(DATE_ON_MENU, '%d/%m/%y') AS formatted_date,
+DATE_ADD(MEAL_TIME, INTERVAL 5 DAY) AS add_to_date,
+DATE_SUB(MEAL_TIME, INTERVAL 5 DAY) AS sub_to_date,
+FORMAT(MEAL_TIME, 'dd-mm-yy', 'it') AS format_date_nation,
+DATE_FORMAT(MEAL_TIME, '%d/%m/%y') AS formatted_date,
 DATE_ADD(DATE_ADD(NOW(), INTERVAL 14 DAY), INTERVAL 4 MONTH) as BIRTHDAY_DATE
 FROM MEAL;
