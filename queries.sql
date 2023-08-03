@@ -20,10 +20,12 @@ Use all of the functions below, find out what they do, write a description for t
 
 
 CREATE TABLE MEAL (
+  ID INT AUTO_INCREMENT,
   NAME VARCHAR(255),
   PRICE DOUBLE,
   CALORIES INT,
-  MEAL_TIME TIMESTAMP
+  MEAL_TIME TIMESTAMP,
+  PRIMARY KEY (ID)
 );
 --The TIMESTAMP() function returns a datetime value based on a date or datetime value.
 
